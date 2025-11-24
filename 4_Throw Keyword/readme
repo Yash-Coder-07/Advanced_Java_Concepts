@@ -1,0 +1,133 @@
+
+# **Custom Exceptions in Java **
+
+Java provides many built-in exceptions, but sometimes your application needs to **represent errors that are specific to your own logic**.
+In such cases, Java allows you to create **custom exception classes**.
+
+---
+
+# ⭐ **1. How to Create a Custom Exception?**
+
+A custom exception is simply a class that **extends an existing exception class**, usually:
+
+* `Exception` (for checked exceptions)
+* `RuntimeException` (for unchecked exceptions)
+
+### ✔ Basic structure:
+
+```java
+class MyException extends Exception {
+    // custom exception class
+}
+```
+
+Here, **MyException** is a checked exception because it extends `Exception`.
+
+---
+
+# ⭐ **2. Adding a Constructor to Pass Custom Messages**
+
+To pass a custom error message, we define a constructor that accepts a string and sends it to the superclass using `super()`.
+
+### ✔ Example:
+
+```java
+public class MyException extends Exception {
+    public MyException(String message) {
+        super(message);
+    }
+}
+```
+
+This allows the error message to be retrieved later using `e.getMessage()`.
+
+---
+
+# ⭐ **3. Throwing a Custom Exception**
+
+You can throw your custom exception using the `throw` keyword.
+
+### ✔ Example:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        try {
+            throw new NavinException("This is my exception");
+        }
+        catch (NavinException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+class NavinException extends Exception {
+    public NavinException(String s) {
+        super(s);
+    }
+}
+```
+
+### ✔ Output:
+
+```
+This is my exception
+```
+
+This demonstrates how to **create**, **throw**, and **catch** a custom exception.
+
+---
+
+# ⭐ **4. What Can Custom Exceptions Extend?**
+
+| You can extend…    | Meaning                                       | Recommended? |
+| ------------------ | --------------------------------------------- | ------------ |
+| `Throwable`        | Not recommended; used for system-level errors | ❌ No         |
+| `Exception`        | Creates a **checked** exception               | ✔ Yes        |
+| `RuntimeException` | Creates an **unchecked** exception            | ✔ Yes        |
+
+---
+
+# ⭐ **5. Recommended Practice**
+
+### ✔ Extend `Exception`
+
+When you want the compiler to *force* the user to handle it using `try-catch`.
+
+### ✔ Extend `RuntimeException`
+
+When you want an unchecked exception (no need to declare/handle).
+
+### ❌ Avoid extending `Throwable`
+
+It is the parent class for both `Error` and `Exception`.
+Errors should never be thrown manually.
+
+---
+
+# ⭐ **6. Why Create Custom Exceptions?**
+
+Custom exceptions are useful when:
+
+* You want meaningful error messages.
+* You want to enforce business rules.
+* Built-in exceptions don’t represent your scenario.
+
+### ✔ Example use cases:
+
+* `InvalidAgeException`
+* `InsufficientBalanceException`
+* `UserNotFoundException`
+* `PasswordTooWeakException`
+
+---
+
+# ⭐ **7. Summary (Placement-Ready)**
+
+* Custom exceptions are classes that extend `Exception` or `RuntimeException`.
+* Use constructors with `super(message)` to pass custom messages.
+* Use `throw` to explicitly throw the custom exception.
+* Catch it using a normal `try-catch` block.
+* Avoid extending `Throwable`.
+
+---
