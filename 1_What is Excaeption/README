@@ -1,0 +1,159 @@
+
+# **What is Exception**
+
+This document provides clear and interview-ready notes on **Exception Handling in Java**, including types of errors, checked vs unchecked exceptions, and exception hierarchy.
+
+---
+
+## 📝 **1. Types of Errors in Java**
+
+### **1️⃣ Compile-Time Errors**
+
+Compile-time errors occur **before execution**, during compilation.
+These are caused by:
+
+* Incorrect syntax
+* Missing semicolons
+* Invalid variable or method names
+* Missing return statements
+
+If compile-time errors exist, Java **does not generate the `.class` file**, and the program cannot run.
+
+---
+
+### **2️⃣ Logical Errors**
+
+Logical errors occur when the program executes successfully but produces **incorrect output**.
+
+They happen due to:
+
+* Wrong formula or logic
+* Incorrect conditions
+* Misplaced operators
+
+The program does **not crash**, but gives the wrong result.
+
+---
+
+### **3️⃣ Runtime Errors (Exceptions)**
+
+Runtime errors occur **when the program is running**.
+These errors are called **Exceptions**, and they **terminate the program** unless properly handled.
+
+Common causes:
+
+* Division by zero
+* File not found
+* Invalid array index
+* Null value access
+
+---
+
+## 🚨 **2. What is an Exception?**
+
+An **Exception** is an unexpected event that disturbs the normal program flow.
+Java provides a mechanism to handle these problems using:
+
+```
+try
+catch
+finally
+throw
+throws
+```
+
+Exception handling ensures the program does not crash and handles failures gracefully.
+
+---
+
+## ⚠️ **3. Types of Exceptions**
+
+Java classifies exceptions into two main categories:
+
+---
+
+### **A. Checked Exceptions**
+
+Checked at **compile time**.
+
+The compiler forces the programmer to:
+
+* Handle using `try-catch`, or
+* Declare using `throws`
+
+Common checked exceptions:
+
+* `IOException`
+* `SQLException`
+* `FileNotFoundException`
+* `ClassNotFoundException`
+
+Used mostly in:
+
+* File I/O
+* Database operations
+* Network communication
+
+---
+
+### **B. Unchecked Exceptions**
+
+Checked at **runtime**, not at compile time.
+Caused mainly by **programming mistakes**.
+
+Common unchecked exceptions:
+
+* `NullPointerException`
+* `ArithmeticException`
+* `ArrayIndexOutOfBoundsException`
+* `ClassCastException`
+
+Java does **not** force you to handle them.
+
+---
+
+## 🆚 **4. Checked vs Unchecked Exceptions — Quick Comparison**
+
+| Feature      | Checked Exception | Unchecked Exception  |
+| ------------ | ----------------- | -------------------- |
+| Checked at   | Compile time      | Runtime              |
+| Must handle? | Yes               | No                   |
+| Reason       | External factors  | Programmer mistakes  |
+| Examples     | IOException       | NullPointerException |
+
+**Key Point:**
+➡️ *Both happen at runtime, but only checked exceptions are verified by the compiler.*
+
+---
+
+## 🌳 **5. Exception Hierarchy (Important!)**
+
+```
+                Throwable
+                 /     \
+         Exception     Error
+            /   \
+   Checked     Unchecked (RuntimeException)
+```
+
+### **Error**
+
+* Not an exception
+* Caused by serious issues (JVM crash, memory limits)
+* Cannot be handled by the program
+
+Examples:
+`OutOfMemoryError`, `StackOverflowError`
+
+---
+
+## 🏁 **6. Summary**
+
+* Java has three types of errors → compile-time, logical, runtime
+* Runtime errors are called **Exceptions**
+* Java provides robust exception handling
+* **Checked exceptions → compile-time**, must be handled
+* **Unchecked exceptions → runtime**, due to coding mistakes
+* Exception hierarchy starts from **Throwable**
+
+---
