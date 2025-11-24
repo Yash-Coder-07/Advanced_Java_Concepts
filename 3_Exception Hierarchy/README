@@ -1,0 +1,123 @@
+
+# **Java Exception Hierarchy **
+
+In Java, **exceptions are objects** that represent abnormal or exceptional conditions that occur during program execution.
+Java provides a structured **exception class hierarchy** to categorize and handle different types of runtime issues.
+
+---
+
+# ⭐ **Important Points About Exception Hierarchy**
+
+### ✔ 1. **Every class in Java extends `Object`**
+
+This means the root of all classes (including exceptions) is the **Object class**.
+
+### ✔ 2. **Top-most class in exception system → `Throwable`**
+
+* `Throwable` is the **superclass** of all errors and exceptions.
+* It directly extends the `Object` class.
+
+### ✔ 3. `Throwable` has **two main subclasses**:
+
+1. **`Error`**
+2. **`Exception`**
+
+---
+
+# ⭐ **Error**
+
+* Represents **serious problems** that applications should *not* try to handle.
+* Usually caused by **JVM-level issues**.
+* **Program cannot recover.**
+* Examples:
+
+  * `OutOfMemoryError`
+  * `StackOverflowError`
+  * `VirtualMachineError`
+
+**Interview line:**
+➡️ *Errors are not meant to be caught or handled by the application.*
+
+---
+
+# ⭐ **Exception**
+
+* Represents **conditions a program may want to catch and handle**.
+* Exceptions are **recoverable**.
+* Examples:
+
+  * `IOException`
+  * `SQLException`
+  * `ArithmeticException`
+
+---
+
+# ⭐ **Checked vs Unchecked Exceptions**
+
+## ✔ **Checked Exceptions**
+
+* **Checked at compile-time.**
+* Programmer must:
+
+  * Handle with `try-catch`, OR
+  * Declare using `throws`
+* If not handled → compile-time error.
+* Examples:
+
+  * `IOException`
+  * `SQLException`
+  * `ClassNotFoundException`
+
+**When used?**
+When dealing with **external resources** like files, DB, networks.
+
+---
+
+## ✔ **Unchecked Exceptions (Runtime Exceptions)**
+
+* **Checked at runtime** (NOT at compile-time).
+* Compiler does NOT force handling.
+* Usually caused by **logic/programming mistakes**.
+* Examples:
+
+  * `NullPointerException`
+  * `ArithmeticException`
+  * `ArrayIndexOutOfBoundsException`
+  * `ClassCastException`
+
+**When used?**
+Logic errors in code.
+
+---
+
+# ⭐ **Java Exception Hierarchy Diagram**
+
+```
+                    Object
+                      |
+                   Throwable
+        --------------------------------
+        |                              |
+       Error                         Exception
+                                   --------------------------
+                                   |                        |
+                           RuntimeException            (Checked Exceptions)
+                                   |                        |
+                    --------------------------------   ---------------------
+                    |              |               |        |              |
+         NullPointerException  ArithmeticException ...   IOException   SQLException
+         ArrayIndexOutOfBoundsException
+```
+
+---
+
+# ⭐ **Quick Interview Summary**
+
+* All exception classes extend **Throwable**.
+* `Error` → Serious, unrecoverable issues.
+* `Exception` → Recoverable issues, can be handled.
+* Checked exceptions → compiler checks them, must be handled.
+* Unchecked exceptions → runtime issues, typically coding mistakes.
+* `RuntimeException` and its subclasses are **unchecked**.
+
+---
